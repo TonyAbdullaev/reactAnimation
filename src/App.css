@@ -1,38 +1,193 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .App {
+  width: 100vw;
+  height: 100vh;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 3px dashed teal;
+  /*animation: show-loader 0.5s forwards;*/
+}
+
+.showHideBtn {
+  width: 100px;
+  padding: 15px 0;
+  border: none;
+  background: teal;
+  color: white;
+  margin-top: 30px;
+  cursor: pointer;
+}
+
+@keyframes show-loader {
+  0% {
+    opacity: 0;
+    transform: translateY(-200px);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+  transform: translateY(0);
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+@keyframes rotate-loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+/* Transition */
+.circle.entering {
+  animation: show-loader .5s forwards;
+}
+.circle.entered  {
+  animation: rotate-loader .5s infinite;
+}
+.circle.exiting  {
+  animation: show-loader .5s reverse;
+}
+.circle.exited  {
+
+}
+/* CSSTransition */
+.circle-show {
+  animation: show-loader .5s forwards;
+}
+.circle-rotate  {
+  animation: rotate-loader .5s infinite;
+}
+.circle-hide  {
+  animation: show-loader .5s reverse;
+}
+/* SwitchTransition */
+
+input {
+  margin: 20px;
+  padding: 5px;
+  border: none;
+  border-bottom: 1px solid grey;
+
+}
+
+.fade-enter {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+.fade-enter-active {
+  opacity: 1;
+  transform: translateX(0%);
+}
+.fade-exit {
+  opacity: 1;
+  transform: translateX(0%);
+}
+.fade-exit-active{
+  opacity: 0;
+  transform: translateX(100%);
+}
+.fade-enter-active,
+.fade-exit-active {
+  transition: opacity 500ms, transform 500ms;
+}
+
+/* TransitionGroup */
+
+.transition-group-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.create-txt {
+  padding: 10px;
+  background: teal;
   color: white;
+  border: none;
 }
 
-.App-link {
-  color: #61dafb;
+.list-item {
+  min-width: 200px;
+  padding: 10px;
+  margin: 5px;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid grey;
+  cursor: pointer;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.todo-enter {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+.todo-enter-active {
+  opacity: 1;
+  transform: translateX(0%);
+}
+.todo-exit {
+  opacity: 1;
+  transform: translateX(0%);
+}
+.todo-exit-active{
+  opacity: 0;
+  transform: translateX(100%);
+}
+.todo-enter-active,
+.todo-exit-active {
+  transition: opacity 500ms, transform 500ms;
+}
+
+/*Animation for Pages*/
+
+.main {
+  color: white;
+  width: 80%;
+  height: 100vh;
+  margin: 0 auto;
+}
+
+a {
+  margin-right: 30px;
+}
+
+@keyframes page-in {
+  0% {
+    opacity: 0;
+    transform: translateX(-400px);
   }
-  to {
-    transform: rotate(360deg);
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes page-out {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(100%);
   }
 }
