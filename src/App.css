@@ -191,3 +191,9 @@ a {
     transform: translateX(100%);
   }
 }
+
+.layout {
+  width: 80%;
+  margin: 0 auto;
+  align-items: center;
+}
